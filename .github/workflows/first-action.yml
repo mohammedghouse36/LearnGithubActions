@@ -3,9 +3,10 @@ on:
   workflow_dispatch:
     inputs:
       config_files:
+        type: choice
         description: 'select config files'
         required: true
-        default: '[devCheetah], devStandalone, stageCheetah, stageStandalone'
+        options: [devCheetah, devStandalone, stageCheetah, stageStandalone]
 jobs:
   first-job:
     runs-on: ubuntu-latest
