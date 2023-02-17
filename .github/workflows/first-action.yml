@@ -56,8 +56,6 @@ jobs:
       - linux
       - x64
     steps:
-      - name: Source Code Checkout
-        uses: actions/checkout@v2
       - name: Run Tests
         run: |
           qarp_attributes="Release_Number:${{github.run_number}};TestSuite:Smoke;context:deployment;application:svc-dms-accounting-checkwriting-service;ci:true;module:appayments;type:api;"
