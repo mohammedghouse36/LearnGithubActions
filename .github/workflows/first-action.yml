@@ -22,16 +22,6 @@ name: Manual-Job
           - smoke
           - integration
           - regression
-      execute_smoke_suite:
-        description: Execute smoke test cases
-        required: false
-        default: false
-        type: boolean
-      execute_integration_regression_suite:
-        description: Execute integration/regression test cases
-        required: false
-        default: false
-        type: boolean
       qa_release_version:
         type: string
         description: Release Version
@@ -43,26 +33,24 @@ name: Manual-Job
         required: false
         default: APPaymentsTestCycle
 env:
-  app_name: svc-dms-accounting-checkwriting-service
-  api_tests_profile: '${{ inputs.environment }}'
-  release_version: '${{ inputs.qa_release_version }}'
-  test_cycle: '${{ inputs.qa_test_cycle }}'
-  api_tests_pom_path: ./api-automation/pom.xml
-  test_suite_path: 'src/test/resources/${{ inputs.suite_name }}.xml'
+  api_tests_profile: "${{ inputs.environment }}"
+  release_version: "${{ inputs.qa_release_version }}"
+  test_cycle: "${{ inputs.qa_test_cycle }}"
+  api_tests_pom_path: "./api-automation/pom.xml"
+  test_suite_path: "src/test/resources/${{ inputs.suite_name }}.xml"
 jobs:
   APi-Tests:
-    runs-on:
-      - self-hosted
-      - linux
-      - x64
+    runs-on: [self-hosted, linux, x64]
     steps:
       - name: Run Tests
         run: |
           qarp_attributes="Release_Number:${{github.run_number}};TestSuite:Smoke;context:deployment;application:svc-dms-accounting-checkwriting-service;ci:true;module:appayments;type:api;"
           if [ "${{ inputs.suite_name }}" != "smoke" ]
           then
-            qarp_attributes="Release_Number:${{github.run_number}};TestSuite:Functional;context:deployment;application:svc-dms-accounting-checkwriting-service;ci:true;module:appayments;type:api;"
+          qarp_attributes="Release_Number:${{github.run_number}};TestSuite:Functional;context:deployment;application:svc-dms-accounting-checkwriting-service;ci:true;module:appayments;type:api;"
+          fi
           export JAVA_HOME=$JDK_11_0_2
           QA_RELEASE_VERSION=${{ github.run_number }}
-          echo "hello ${qarp_attributes} "
+          MAVEN=Maven_3_6_3
+          echo "Hello ${qarp_attributes} "
         shell: bash
