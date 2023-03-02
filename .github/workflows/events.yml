@@ -10,4 +10,4 @@ jobs:
       - name: First
         run: echo "First Step executed"
       - name: Second
-        run:  echo "Second Step executed"
+        run:  echo "Second Step executed succesfully"
