@@ -4,7 +4,8 @@ name: Manual-Job
       
 jobs:
   APi-Tests:
-    runs-on: [self-hosted, linux, x64]
+    name: Exploring GitHub Actions
+    runs-on: ubuntu-latest
     steps:
       - name: Run Tests
         run: |
