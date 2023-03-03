@@ -4,7 +4,7 @@ name: Manual-Job
       
 jobs:
   APi-Tests:
-    runs-on: [self-hosted, linux, x64]
+    runs-on: [self-hosted]
     steps:
       - name: Run Tests
         run: |
