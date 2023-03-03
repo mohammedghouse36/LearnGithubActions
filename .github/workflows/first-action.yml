@@ -1,56 +1,13 @@
 name: Manual-Job
 'on':
   workflow_dispatch:
-    inputs:
-      environment:
-        type: choice
-        description: Select Environment
-        required: true
-        default: Dev
-        options:
-          - Dev
-          - IDE
-          - Stage
-          - StageSingleA
-          - Perf
-      suite_name:
-        type: choice
-        description: Select Execution Suite
-        required: true
-        default: smoke
-        options:
-          - smoke
-          - integration
-          - regression
-      qa_release_version:
-        type: string
-        description: Release Version
-        required: false
-        default: APPaymentsReleaseVersion
-      qa_test_cycle:
-        type: string
-        description: QA test cycle
-        required: false
-        default: APPaymentsTestCycle
-env:
-  api_tests_profile: "${{ inputs.environment }}"
-  release_version: "${{ inputs.qa_release_version }}"
-  test_cycle: "${{ inputs.qa_test_cycle }}"
-  api_tests_pom_path: "./api-automation/pom.xml"
-  test_suite_path: "src/test/resources/${{ inputs.suite_name }}.xml"
+      
 jobs:
   APi-Tests:
     runs-on: [self-hosted, linux, x64]
     steps:
       - name: Run Tests
         run: |
-          qarp_attributes="Release_Number:${{github.run_number}};TestSuite:Smoke;context:deployment;application:svc-dms-accounting-checkwriting-service;ci:true;module:appayments;type:api;"
-          if [ "${{ inputs.suite_name }}" != "smoke" ]
-          then
-          qarp_attributes="Release_Number:${{github.run_number}};TestSuite:Functional;context:deployment;application:svc-dms-accounting-checkwriting-service;ci:true;module:appayments;type:api;"
-          fi
-          export JAVA_HOME=$JDK_11_0_2
-          QA_RELEASE_VERSION=${{ github.run_number }}
-          MAVEN=Maven_3_6_3
+          echo  ${GITHUB_API_URL}
           echo "Hello ${qarp_attributes} "
         shell: bash
