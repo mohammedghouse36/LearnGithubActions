@@ -17,3 +17,9 @@ jobs:
         with:
           name: my-artifact
           path: ${{ github.workspace }}
+      - name: download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+      - name: View Artifacts
+        run: ls
