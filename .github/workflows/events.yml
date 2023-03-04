@@ -14,5 +14,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: myArtifacts
-          path: |
-            package.json
+          path: ./package.json
