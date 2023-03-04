@@ -1,7 +1,6 @@
 name: Event Demo1
 on:
-  pull_request:
-    types: [opened]
+  push:
   workflow_dispatch:
 jobs:
   deploy:
