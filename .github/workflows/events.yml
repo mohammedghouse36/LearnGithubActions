@@ -15,4 +15,4 @@ jobs:
         with:
           name: myArtifacts
           path: |
-            sample.txt
+            package.json
