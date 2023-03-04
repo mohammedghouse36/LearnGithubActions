@@ -5,9 +5,14 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    outputs:
+      myOutput: ${{ steps.set-output.outputs.myVar }}
     steps:
       - name: First
         run: echo "First Step executed"
+      - name: Set Output
+        id: set-output
+        run: echo 'myVar=Hyderabad' >> $GITHUB_OUTPUT
       - name: Second
         run:  echo "Second Step executed succesfully"
       - name: Create a file
@@ -23,3 +28,10 @@ jobs:
           name: my-artifact
       - name: View Artifacts
         run: ls
+
+  CustomJob:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: get-output
+        run: echo "${{ needs.deploy.outputs.myOutput }}"
