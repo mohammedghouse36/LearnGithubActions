@@ -10,8 +10,10 @@ jobs:
         run: echo "First Step executed"
       - name: Second
         run:  echo "Second Step executed succesfully"
-      - name: Upload artifacts
+      - name: Create a file
+        run: echo ${{ matrix.node-version }} > my_file.txt
+      - name: Accidentally upload to the same artifact via multiple jobs
         uses: actions/upload-artifact@v3
         with:
-          name: myArtifacts
-          path: ./package.json
+          name: my-artifact
+          path: ${{ github.workspace }}
