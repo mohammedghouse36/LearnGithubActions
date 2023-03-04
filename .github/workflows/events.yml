@@ -10,3 +10,8 @@ jobs:
         run: echo "First Step executed"
       - name: Second
         run:  echo "Second Step executed succesfully"
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: myArtifacts
+          path: sample.txt
