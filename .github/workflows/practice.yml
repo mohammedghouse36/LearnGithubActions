@@ -16,3 +16,7 @@ jobs:
     steps:
       - name: print-step
         run: echo "${{ needs.build.outputs.myVar }}"
+
+  reuse:
+    runs-on: ubuntu-latest
+    uses: ./.github/workflows/reusable.yml

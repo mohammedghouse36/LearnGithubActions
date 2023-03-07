@@ -1,0 +1,7 @@
+name: Resuable-workflow
+on: workflow_callable
+jobs:
+  runs-on: ubuntu-latest
+  steps:
+    - name: step1
+      run: echo "running my step"
