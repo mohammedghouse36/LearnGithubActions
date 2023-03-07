@@ -2,17 +2,18 @@ name: Conditional Checks
 on: push
 jobs:
 
-  job1:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: First Job1
+        id: run-tests
         run: echo "Running First Job1"
       - name: Second Job1
         run: echo "Running Second Job1"
-  job2:
-    if: failure()
+  build:
+    if: steps.run-tests.outcome == 'failure'
     runs-on: ubuntu-latest
-    needs: job1
+    needs: test
     steps:
       - name: First Job2
         run: echo "Running First Job2"
