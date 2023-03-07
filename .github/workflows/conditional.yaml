@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test Step1
+        continue-on-error: true
         id: run-tests
         run: | 
           echo "Running First Job1"
