@@ -4,7 +4,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      myVar: ${{ steps.myStep.output.myVar }}
+      myVar: ${{ steps.myStep.outputs.myVar }}
     steps:
       - name: Step1
         id: myStep
