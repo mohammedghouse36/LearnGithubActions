@@ -23,7 +23,7 @@ jobs:
       - name: Build Step2
         run: |
           echo "Running Second Job2"
-          echo ${{ toJson(github) }}
+          echo "${{ toJson(github) }}"
 
   report:
     needs: test
