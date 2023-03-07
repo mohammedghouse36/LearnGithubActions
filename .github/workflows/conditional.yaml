@@ -5,17 +5,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: First Job1
+      - name: Test Step1
         id: run-tests
         run: echo "Running First Job1"
-      - name: Second Job1
+      - name: Test Step2
+        if: steps.run-tests.outcome == 'failure'
         run: echo "Running Second Job1"
   build:
-    if: steps.run-tests.outcome == 'failure'
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - name: First Job2
+      - name: Build Step1
         run: echo "Running First Job2"
-      - name: Second Job2
+      - name: Build Step2
         run: echo "Running Second Job2"
