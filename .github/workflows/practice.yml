@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Step1
         id: myStep
-        run: echo 'myVar=testing' >> $GITHUB.OUTPUT
+        run: echo 'myVar=testing' >> $GITHUB_OUTPUT
 
   test:
     runs-on: ubuntu-latest
