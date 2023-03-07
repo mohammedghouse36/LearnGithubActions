@@ -30,4 +30,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Stepping
-        run: echo "Hello"
+        run: |
+          echo "Running Second Job2"
+          echo ${{ toJson(github) }}
