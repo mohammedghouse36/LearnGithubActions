@@ -1,0 +1,18 @@
+name: Conditional Checks
+on: push
+jobs:
+
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First Job1
+        run: echo "Running First Job1"
+      - name: Second Job1
+        run: echo "Running Second Job1"
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First Job2
+        run: echo "Running First Job2"
+      - name: Second Job2
+        run: echo "Running Second Job2"
