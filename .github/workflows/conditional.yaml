@@ -11,7 +11,7 @@ jobs:
           echo "Running First Job1"
           exit 1
       - name: Test Step2
-        if: steps.run-tests.outcome == 'success'
+        if: failure() || steps.run-tests.outcome == 'success'
         run: echo "Running Second Job1"
   build:
     runs-on: ubuntu-latest
