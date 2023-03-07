@@ -1,7 +1,7 @@
-name: Resuable-workflow
+name: Reusable Deploy
 on: workflow_call
 jobs:
-  custom-job:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: step1
