@@ -1,5 +1,5 @@
 name: Resuable-workflow
-on: workflow_callable
+on: workflow_call
 jobs:
   runs-on: ubuntu-latest
   steps:
