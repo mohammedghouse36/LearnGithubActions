@@ -1,14 +1,15 @@
 name: Matrix-Demo
 on: push
 jobs:
-  name: Build
-  strategy:
-    matrix:
-      run-platforms: [ubuntu-latest, windows-latest, linux]
-  runs-on: ${{ matrix.run-platforms}}
-  steps:
-    - name: Raise PR
-      run: echo "Running PR"
-    - name: Approve PR
-      run: echo "Approving PR"
+  build:
+    name: Build Job
+    strategy:
+      matrix:
+        run-platforms: [ubuntu-latest, windows-latest, linux]
+    runs-on: ${{ matrix.run-platforms}}
+    steps:
+      - name: Raise PR
+        run: echo "Running PR"
+      - name: Approve PR
+        run: echo "Approving PR"
 
