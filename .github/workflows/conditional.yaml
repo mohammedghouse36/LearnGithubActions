@@ -10,6 +10,7 @@ jobs:
       - name: Second Job1
         run: echo "Running Second Job1"
   job2:
+    if: failure()
     runs-on: ubuntu-latest
     needs: job1
     steps:
