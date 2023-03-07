@@ -22,3 +22,7 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       java-name: java8
+
+  print:
+    needs: reuse
+    run: echo "${{ needs.reuse.result}}"
