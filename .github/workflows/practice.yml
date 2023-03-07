@@ -27,6 +27,5 @@ jobs:
     needs: reuse
     runs-on: ubuntu-latest
     steps:
-      myStep:
-        - name: printing job
-          run: echo "${{ needs.reuse.outputs.result }}"
+      - name: printing job
+        run: echo "${{ needs.reuse.outputs.result }}"
