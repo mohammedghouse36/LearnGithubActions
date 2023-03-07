@@ -20,4 +20,14 @@ jobs:
       - name: Build Step1
         run: echo "Running First Job2"
       - name: Build Step2
-        run: echo "Running Second Job2"
+        run: |
+          echo "Running Second Job2"
+          echo ${{ toJson(github) }}
+
+  report:
+    needs: test
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stepping
+        run: echo "Hello"
