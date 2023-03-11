@@ -5,7 +5,7 @@ jobs:
     name: This is to execute container
     runs-on: ubuntu-latest
     container:
-      image: node:16
+      image: [ node:16, node:14.16 ]
     steps:
       - name: step1
         run: echo "Started in  container"
