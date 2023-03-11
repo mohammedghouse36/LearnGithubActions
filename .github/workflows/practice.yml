@@ -1,0 +1,31 @@
+name: Practice
+on: push
+jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#    outputs:
+#      myVar: ${{ steps.myStep.outputs.myVar }}
+#    steps:
+#      - name: Step1
+#        id: myStep
+#        run: echo 'myVar=testing' >> $GITHUB_OUTPUT
+#
+#  test:
+#    runs-on: ubuntu-latest
+#    needs: build
+#    steps:
+#      - name: print-step
+#        run: echo "${{ needs.build.outputs.myVar }}"
+
+  reuse:
+    # needs: test
+    uses: ./.github/workflows/reusable.yml
+    with:
+      java-name: java8
+
+  print:
+    needs: reuse
+    runs-on: ubuntu-latest
+    steps:
+      - name: printing job
+        run: echo "${{ needs.reuse.outputs.result }}"

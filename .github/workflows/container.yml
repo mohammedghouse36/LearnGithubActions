@@ -1,0 +1,15 @@
+name: Container-Demo
+on: push
+jobs:
+  myJob:
+    name: This is to execute container
+    runs-on: ubuntu-latest
+    container:
+      image: mongo
+      env:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: example
+
+    steps:
+      - name: step1
+        run: echo "Started in  container"

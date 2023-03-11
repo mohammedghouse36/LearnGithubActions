@@ -1,0 +1,36 @@
+name: Conditional Checks
+on: push
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test Step1
+        continue-on-error: true
+        id: run-tests
+        run: | 
+          echo "Running First Job1"
+          exit 1
+      - name: Test Step2
+        if: failure() || steps.run-tests.outcome == 'success'
+        run: echo "Running Second Job1"
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Build Step1
+        run: echo "Running First Job2"
+      - name: Build Step2
+        run: |
+          echo "Running Second Job2"
+          echo "${{ toJson(github) }}"
+
+  report:
+    needs: test
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stepping
+        run: |
+          echo "Running Second Job2"
+          echo "${{ toJson(github) }}"
