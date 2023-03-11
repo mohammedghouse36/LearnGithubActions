@@ -5,7 +5,11 @@ jobs:
     name: This is to execute container
     runs-on: ubuntu-latest
     container:
-      image: [ node:16, node:14.16 ]
+      image: mongo
+      env:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: example
+
     steps:
       - name: step1
         run: echo "Started in  container"
